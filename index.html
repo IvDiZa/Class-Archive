@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>UCL Class of 2028 • 2000s Vibes</title>
+    <title>UCL Class of 2028 • 2000s Mixtape Archive • Grey Scale</title>
     <style>
         * {
             margin: 0;
@@ -11,16 +11,16 @@
             box-sizing: border-box;
         }
 
-        /* 90s VIBE with baby blue + lavender pastels */
+        /* 2000s VIBE with grey tones, metallic, early 2000s tech aesthetic */
         body {
-            background: linear-gradient(135deg, #c5e0f0 0%, #e6d5f0 100%);
-            font-family: 'Courier New', 'VT323', 'Press Start 2P', 'Comic Sans MS', 'Chalkboard SE', monospace;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 50%, #2f2f2f 100%);
+            font-family: 'Courier New', 'VT323', 'Lucida Console', 'Monaco', monospace;
             padding: 1.8rem 1.2rem 3rem;
-            color: #3a2a5e;
+            color: #cccccc;
             position: relative;
         }
 
-        /* retro tape pattern overlay */
+        /* subtle grid pattern like old monitor */
         body::before {
             content: "";
             position: fixed;
@@ -28,7 +28,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(45deg, rgba(180, 200, 255, 0.1) 0px, rgba(180, 200, 255, 0.1) 2px, transparent 2px, transparent 8px);
+            background: repeating-linear-gradient(0deg, rgba(100, 100, 100, 0.1) 0px, rgba(100, 100, 100, 0.1) 1px, transparent 1px, transparent 4px);
             pointer-events: none;
             z-index: 0;
         }
@@ -38,30 +38,30 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
-            background: rgba(255, 250, 255, 0.85);
+            background: rgba(30, 30, 35, 0.92);
             backdrop-filter: blur(3px);
-            border: 3px solid #b8a9d9;
-            border-radius: 24px;
+            border: 2px solid #6a6a6a;
+            border-radius: 16px;
             padding: 1.8rem 1.5rem;
-            box-shadow: 12px 12px 0px #9b87c9, 0 0 0 4px #f0d0ff inset, 0 0 0 8px #c2e0ff inset;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
         }
 
-        /* cassette tape decorations */
-        .cassette-tape {
+        /* CD/DVD decoration */
+        .cd-dvd {
             position: absolute;
             top: -15px;
             right: 20px;
             font-size: 2.5rem;
-            opacity: 0.6;
-            transform: rotate(10deg);
-            filter: drop-shadow(2px 2px 0px #b8a9d9);
+            opacity: 0.5;
+            transform: rotate(15deg);
+            filter: drop-shadow(2px 2px 0px #4a4a4a);
         }
 
-        /* header with mixtape energy — UPDATED: darker, readable grey-blue text */
+        /* header with 2000s style */
         .archive-header {
             text-align: center;
             margin-bottom: 2rem;
-            border-bottom: 3px dashed #b8a9d9;
+            border-bottom: 2px solid #5a5a5a;
             padding-bottom: 1.2rem;
             position: relative;
         }
@@ -69,40 +69,36 @@
         .archive-header h1 {
             font-size: 2rem;
             font-weight: bold;
-            font-family: 'Courier New', 'VT323', monospace;
+            font-family: 'Courier New', 'Lucida Console', monospace;
             letter-spacing: 2px;
-            /* Darker slate grey-blue for excellent readability */
-            background: linear-gradient(135deg, #2c3e66, #2c4a6e, #2a4b7a);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 2px 2px 0px rgba(255, 240, 255, 0.6);
+            color: #e0e0e0;
+            text-shadow: 2px 2px 0px #3a3a3a;
             text-transform: uppercase;
         }
 
         .sub {
             font-family: monospace;
             font-size: 0.85rem;
-            color: #2d4a6e;  /* deep readable blue-grey */
-            background: #f0eaffcc;
+            color: #b0b0b0;
+            background: #252525cc;
             display: inline-block;
             padding: 0.4rem 1.2rem;
             margin-top: 12px;
-            border-left: 6px solid #b6a2d6;
-            border-right: 6px solid #9bc0e0;
-            border-radius: 40px;
+            border-left: 4px solid #808080;
+            border-right: 4px solid #808080;
+            border-radius: 8px;
             backdrop-filter: blur(2px);
-            font-weight: 600;
+            font-weight: 500;
         }
 
-        /* upload card — mixtape style */
+        /* upload card — metallic grey */
         .upload-card {
-            background: #f8f0ffdd;
-            border: 2px solid #b8a9d9;
-            border-radius: 32px;
+            background: #2a2a2add;
+            border: 1px solid #6a6a6a;
+            border-radius: 24px;
             padding: 1.3rem 2rem;
             margin-bottom: 2rem;
-            box-shadow: 6px 6px 0px #b3a0d0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: 0.1s linear;
         }
 
@@ -115,25 +111,24 @@
         }
 
         .file-label {
-            background: #b8a9d9;
-            color: #2e1f47;
+            background: #5a5a5a;
+            color: #f0f0f0;
             font-weight: bold;
             font-family: monospace;
             padding: 0.7rem 1.6rem;
-            border-radius: 60px;
+            border-radius: 8px;
             border: none;
             font-size: 0.85rem;
             cursor: pointer;
             transition: 0.1s linear;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 3px 3px 0px #6b5a8e;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .file-label:hover {
-            background: #cbb2ff;
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0px #6b5a8e;
+            background: #7a7a7a;
+            transform: translateY(-1px);
         }
 
         input[type="file"] {
@@ -143,22 +138,22 @@
         .upload-info {
             font-family: monospace;
             font-size: 0.7rem;
-            background: #e2d5ffcc;
+            background: #222222cc;
             padding: 0.5rem 1rem;
-            border-radius: 40px;
-            color: #2d4a6e;
-            border-left: 4px solid #b6a2d6;
+            border-radius: 8px;
+            color: #c0c0c0;
+            border-left: 3px solid #808080;
             font-weight: 500;
         }
 
-        /* class photo section — permanent cassette jewel */
+        /* class photo section — permanent */
         .class-photo-section {
-            background: #faf5ff;
-            border-radius: 28px;
+            background: #2a2a2a;
+            border-radius: 20px;
             padding: 1.2rem;
             margin-bottom: 2rem;
-            border: 2px solid #cbb2ff;
-            box-shadow: 8px 8px 0px #b1a0ce;
+            border: 1px solid #6a6a6a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .section-title {
@@ -169,16 +164,16 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            border-left: 10px solid #b8a9d9;
-            color: #2c4d6e;
-            background: linear-gradient(90deg, #eeddff, transparent);
+            border-left: 4px solid #808080;
+            color: #d0d0d0;
+            background: linear-gradient(90deg, #3a3a3a, transparent);
         }
 
         .class-photo-card {
-            background: #ffffffdd;
-            border-radius: 20px;
+            background: #1e1e1e;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #dac6ff;
+            border: 1px solid #5a5a5a;
         }
 
         .class-img-wrapper {
@@ -186,7 +181,7 @@
             max-height: 480px;
             display: flex;
             justify-content: center;
-            background: #e9dcff;
+            background: #252525;
             padding: 10px;
         }
 
@@ -194,44 +189,44 @@
             max-width: 100%;
             max-height: 440px;
             object-fit: contain;
-            border-radius: 16px;
-            border: 2px solid #c2b0e6;
+            border-radius: 12px;
+            border: 1px solid #6a6a6a;
         }
 
         .image-caption {
             padding: 0.9rem 1.3rem;
-            background: #fdf9ff;
+            background: #242424;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
-            border-top: 2px dotted #cfbef5;
+            border-top: 1px solid #4a4a4a;
         }
 
         .caption-text {
             font-family: monospace;
             font-weight: bold;
-            background: #efe6ff;
+            background: #2f2f2f;
             padding: 4px 12px;
-            border-radius: 40px;
-            color: #2c4d6e;
+            border-radius: 8px;
+            color: #d0d0d0;
         }
 
         .permanent-badge {
-            background: #c5d9f0;
-            color: #2c4d6e;
+            background: #3a3a3a;
+            color: #c0c0c0;
             font-size: 0.65rem;
             font-weight: bold;
             padding: 4px 12px;
-            border-radius: 30px;
+            border-radius: 8px;
             display: inline-flex;
             align-items: center;
             gap: 5px;
             font-family: monospace;
         }
 
-        /* other images gallery — 90s mixtape cards */
+        /* other images gallery */
         .other-images-section {
             margin-top: 0.8rem;
         }
@@ -241,14 +236,14 @@
             font-weight: bold;
             margin-bottom: 1.2rem;
             padding-left: 0.5rem;
-            color: #2c4d6e;
+            color: #c0c0c0;
             display: flex;
             align-items: center;
             gap: 8px;
-            background: #e7dcff99;
+            background: #2a2a2a99;
             width: fit-content;
             padding: 6px 18px;
-            border-radius: 60px;
+            border-radius: 8px;
             backdrop-filter: blur(2px);
         }
 
@@ -259,21 +254,22 @@
         }
 
         .archive-item {
-            background: #fffbfe;
-            border-radius: 24px;
+            background: #2a2a2a;
+            border-radius: 16px;
             overflow: hidden;
             transition: all 0.2s ease;
-            border: 2px solid #cfbef5;
-            box-shadow: 5px 5px 0px #b6a0d0;
+            border: 1px solid #5a5a5a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .archive-item:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 8px 8px 0px #9f88c5;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border-color: #7a7a7a;
         }
 
         .img-box {
-            background: #ebddff;
+            background: #1f1f1f;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -292,70 +288,70 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #fdf5ff;
-            border-top: 1px solid #e6d8ff;
+            background: #252525;
+            border-top: 1px solid #3a3a3a;
             flex-wrap: wrap;
             gap: 8px;
         }
 
         .item-timestamp {
             font-size: 0.65rem;
-            color: #5c6f8c;
+            color: #909090;
             font-family: monospace;
         }
 
         .btn-sm-delete {
-            background: #ffe6f0;
-            border: 1px solid #ddb6f0;
+            background: #3a2a2a;
+            border: 1px solid #6a4a4a;
             padding: 5px 12px;
-            border-radius: 40px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 0.7rem;
             font-weight: bold;
-            color: #8b5e9e;
+            color: #ccaaaa;
             font-family: monospace;
         }
 
         .btn-sm-delete:hover {
-            background: #ffd0e6;
-            transform: scale(0.95);
+            background: #5a3a3a;
+            transform: scale(0.96);
         }
 
         .promote-btn {
-            background: #cfe2ff;
-            border: 1px solid #b8a9d9;
+            background: #2a3a4a;
+            border: 1px solid #5a6a7a;
             padding: 5px 12px;
-            border-radius: 40px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 0.7rem;
             font-weight: bold;
-            color: #2c4a6e;
+            color: #aaccff;
             font-family: monospace;
         }
 
         .promote-btn:hover {
-            background: #bdd4ff;
+            background: #3a4a5a;
             transform: scale(0.96);
         }
 
         .empty-archive-msg {
-            background: #f7f0ff;
-            border-radius: 32px;
+            background: #252525;
+            border-radius: 16px;
             padding: 2rem;
             text-align: center;
-            color: #5c6f8c;
+            color: #909090;
             font-weight: bold;
             grid-column: 1 / -1;
-            border: 2px dashed #cfbef5;
+            border: 1px dashed #5a5a5a;
         }
 
         .footer-note {
             margin-top: 2.5rem;
             text-align: center;
             font-size: 0.7rem;
-            border-top: 2px solid #dac6ff;
+            border-top: 1px solid #4a4a4a;
             padding-top: 1rem;
-            color: #5c6f8c;
+            color: #808080;
             font-family: monospace;
             font-weight: 500;
         }
@@ -366,20 +362,24 @@
         }
 
         .edit-caption-btn, .edit-other-caption {
-            background: #e3d6ff;
-            border: 1px solid #c2b0e6;
-            border-radius: 40px;
+            background: #2a2a2a;
+            border: 1px solid #5a5a5a;
+            border-radius: 8px;
             padding: 4px 14px;
             font-size: 0.65rem;
             font-weight: bold;
-            color: #2c4a6e;
+            color: #c0c0c0;
         }
 
-        /* mixtape doodles */
+        .edit-caption-btn:hover, .edit-other-caption:hover {
+            background: #3a3a3a;
+        }
+
+        /* 2000s icon */
         .mixtape-icon {
             font-size: 1.6rem;
             vertical-align: middle;
-            filter: drop-shadow(2px 2px 0px #b8a9d9);
+            filter: drop-shadow(1px 1px 0px #4a4a4a);
         }
 
         @media (max-width: 650px) {
@@ -391,35 +391,35 @@
             }
         }
 
-        .blink-90s {
+        .blink-2000s {
             animation: blink 1s step-end infinite;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+            50% { opacity: 0.4; }
         }
     </style>
 </head>
 <body>
 <div class="archive-container">
-    <div class="cassette-tape">📼🎧</div>
+    <div class="cd-dvd">💿📀</div>
     <div class="archive-header">
         <h1>🎵 UCL CLASS OF 2028 🎵<br>📼 INFORMATION, DATA & SOCIETY 📀</h1>
         <div class="sub">
-            💿 90s MIXTAPE ARCHIVE 💿 <span class="blink-90s">✦</span> PERMANENT CLASS PHOTO <span class="blink-90s">✦</span> BABY BLUE & LAVENDER VIBE
+            💿 2000s MIXTAPE ARCHIVE 💿 <span class="blink-2000s">✦</span> PERMANENT CLASS PHOTO <span class="blink-2000s">✦</span>
         </div>
     </div>
 
-    <!-- upload zone retro mixtape -->
+    <!-- upload zone retro -->
     <div class="upload-card">
         <div class="upload-area">
             <label class="file-label" for="imageUploadInput">
-                🎤 + ADD TO MIXTAPE
+                🎤 + ADD TO ARCHIVE
             </label>
             <input type="file" id="imageUploadInput" accept="image/jpeg, image/png, image/webp, image/jpg, image/gif">
             <div class="upload-info">
-                📀 BOOMBOX MODE: permanent class photo stays on top. Use [🌟 SET AS CLASS] to update it.<br>
-                🎧 Upload memories, edit captions, rewind the 90s.
+                💿 2000s MODE: permanent class photo stays on top. Use [🌟 SET AS CLASS] to update it.<br>
+                🎧 Upload memories, edit captions, early 2000s vibes.
             </div>
         </div>
     </div>
@@ -427,25 +427,25 @@
     <!-- dynamic archive grid -->
     <div class="archive-grid" id="archiveGridContainer"></div>
     <div class="footer-note">
-        🎶 UCL | INFORMATION DATA & SOCIETY — CLASS OF 2028 • 90s MIXTAPE EDITION 🎶<br>
-        📼 permanent class photo • baby blue + lavender • rewind & play
+        🎶 UCL | INFORMATION DATA & SOCIETY — CLASS OF 2028 • 2000s ARCHIVE EDITION 🎶<br>
+        📀 permanent class photo • grey scale • rewind to the 2000s
     </div>
 </div>
 
 <script>
-    // ========== 90s MIXTAPE STORAGE with PERMANENT CLASS PHOTO ==========
-    const STORAGE_KEY = "ucl_mixtape_90s_permanent_class";
+    // ========== 2000s STORAGE with PERMANENT CLASS PHOTO ==========
+    const STORAGE_KEY = "ucl_mixtape_2000s_permanent_class";
     let imagesArray = [];
 
-    // DEFAULT PERMANENT CLASS PHOTO — 90s cassette aesthetic
-    const DEFAULT_CLASS_PHOTO_URL = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%23e0d0ff'/%3E%3Cpath d='M150,150 L650,150 L600,350 L200,350 Z' fill='%23c5e0f0' stroke='%239b87c9' stroke-width='6'/%3E%3Ccircle cx='400' cy='250' r='60' fill='%23f5e6ff' stroke='%23b8a9d9' stroke-width='4'/%3E%3Ctext x='400' y='220' font-size='42' text-anchor='middle' fill='%235e3e8e' font-weight='bold' font-family='monospace'%3EUCL%3C/text%3E%3Ctext x='400' y='285' font-size='28' text-anchor='middle' fill='%237b5aa5'%3EClass of 2028%3C/text%3E%3Ctext x='400' y='345' font-size='20' text-anchor='middle' fill='%239579be'%3EInfo%2C Data %26 Society%3C/text%3E%3C/svg%3E";
+    // DEFAULT PERMANENT CLASS PHOTO — 2000s aesthetic
+    const DEFAULT_CLASS_PHOTO_URL = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%233a3a3a'/%3E%3Cpath d='M150,150 L650,150 L600,350 L200,350 Z' fill='%234a4a4a' stroke='%236a6a6a' stroke-width='4'/%3E%3Ccircle cx='400' cy='250' r='60' fill='%235a5a5a' stroke='%237a7a7a' stroke-width='3'/%3E%3Ctext x='400' y='220' font-size='42' text-anchor='middle' fill='%23cccccc' font-weight='bold' font-family='monospace'%3EUCL%3C/text%3E%3Ctext x='400' y='285' font-size='28' text-anchor='middle' fill='%23bbbbbb'%3EClass of 2028%3C/text%3E%3Ctext x='400' y='345' font-size='20' text-anchor='middle' fill='%23aaaaaa'%3EInfo%2C Data %26 Society%3C/text%3E%3C/svg%3E";
 
     function getDefaultClassPhoto() {
         return {
-            id: "permanent_class_photo_ucl_mixtape",
+            id: "permanent_class_photo_ucl_2000s",
             dataUrl: DEFAULT_CLASS_PHOTO_URL,
             timestamp: Date.now(),
-            caption: "🎧 UCL Class of 2028 · Permanent Mixtape Class Photo 🎤",
+            caption: "💿 UCL Class of 2028 · Permanent Archive Photo 💿",
             isClassPhoto: true,
             permanent: true
         };
@@ -470,7 +470,7 @@
     }
 
     function ensureClassPhotoIntegrity() {
-        const permanentExists = imagesArray.some(img => img.id === "permanent_class_photo_ucl_mixtape");
+        const permanentExists = imagesArray.some(img => img.id === "permanent_class_photo_ucl_2000s");
         if (!permanentExists) {
             imagesArray.unshift(getDefaultClassPhoto());
         }
@@ -480,11 +480,11 @@
             if (img.isClassPhoto === true) hasClass = true;
         }
         if (!hasClass) {
-            const perm = imagesArray.find(img => img.id === "permanent_class_photo_ucl_mixtape");
+            const perm = imagesArray.find(img => img.id === "permanent_class_photo_ucl_2000s");
             if (perm) perm.isClassPhoto = true;
         }
         // additionally, ensure no other image has class photo flag
-        const permImg = imagesArray.find(img => img.id === "permanent_class_photo_ucl_mixtape");
+        const permImg = imagesArray.find(img => img.id === "permanent_class_photo_ucl_2000s");
         for (let img of imagesArray) {
             if (img !== permImg) img.isClassPhoto = false;
         }
@@ -499,7 +499,7 @@
     function addImage(dataUrl, customCaption = null) {
         const newId = Date.now() + '-' + Math.random().toString(36).substr(2, 8);
         const timestamp = Date.now();
-        const caption = customCaption ? customCaption : `📼 Mixtape cut ${new Date(timestamp).toLocaleString()}`;
+        const caption = customCaption ? customCaption : `💿 Archive ${new Date(timestamp).toLocaleString()}`;
         const newImage = {
             id: newId,
             dataUrl: dataUrl,
@@ -516,7 +516,7 @@
     function deleteImage(id) {
         const targetImg = imagesArray.find(img => img.id === id);
         if (targetImg && targetImg.permanent === true) {
-            alert("🎵 The class photo is permanent! You can't delete it. Use 'Set as Class Photo' on another image to replace it if you wish.");
+            alert("💿 The class photo is permanent! You can't delete it. Use 'Set as Class Photo' on another image to replace it if you wish.");
             return;
         }
         const index = imagesArray.findIndex(img => img.id === id);
@@ -535,7 +535,6 @@
             img.isClassPhoto = false;
         }
         targetImg.isClassPhoto = true;
-        // keep permanent flag if target is permanent (only the default one has it)
         saveToStorage();
         renderArchive();
     }
@@ -543,7 +542,7 @@
     function editCaption(id, newCaption) {
         const img = imagesArray.find(i => i.id === id);
         if (img) {
-            img.caption = newCaption.trim() || "🎶 90s memory";
+            img.caption = newCaption.trim() || "💿 2000s memory";
             saveToStorage();
             renderArchive();
         }
@@ -574,8 +573,8 @@
             html += `
                 <div class="class-photo-section">
                     <div class="section-title">
-                        <span class="mixtape-icon">📼🎤</span> PERMANENT CLASS PHOTO · TOP OF THE CHARTS
-                        <span class="badge-star" style="background:#dac6ff; color:#2c4a6e; padding:0.2rem 0.8rem; border-radius:40px;">★ UCL 2028 ★</span>
+                        <span class="mixtape-icon">💿📀</span> PERMANENT CLASS PHOTO · TOP OF THE ARCHIVE
+                        <span class="badge-star" style="background:#3a3a3a; color:#c0c0c0; padding:0.2rem 0.8rem; border-radius:8px;">★ UCL 2028 ★</span>
                     </div>
                     <div class="class-photo-card">
                         <div class="class-img-wrapper">
@@ -583,34 +582,34 @@
                         </div>
                         <div class="image-caption">
                             <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items:center;">
-                                <span class="caption-text">🎧 ${escapeHtml(classPhotoImg.caption)}</span>
-                                <button class="edit-caption-btn" data-id="${classPhotoImg.id}" data-current="${escapeHtml(classPhotoImg.caption)}" style="background:#ede2ff;">✎ Edit Caption</button>
-                                ${isPerm ? '<span class="permanent-badge">🔒 Permanent Class Photo · Can\'t Delete</span>' : ''}
+                                <span class="caption-text">💿 ${escapeHtml(classPhotoImg.caption)}</span>
+                                <button class="edit-caption-btn" data-id="${classPhotoImg.id}" data-current="${escapeHtml(classPhotoImg.caption)}" style="background:#2f2f2f;">✎ Edit Caption</button>
+                                ${isPerm ? '<span class="permanent-badge">🔒 Permanent · Cannot Delete</span>' : ''}
                             </div>
-                            ${!isPerm ? `<button class="delete-btn" data-id="${classPhotoImg.id}" style="background:#ffe6f0; border:none; border-radius:40px; padding:6px 14px;">🗑️ Delete</button>` : '<span style="background:#ded1f5; padding:6px 14px; border-radius:40px; font-size:0.7rem;">✨ Permanent Memory ✨</span>'}
+                            ${!isPerm ? `<button class="delete-btn" data-id="${classPhotoImg.id}" style="background:#3a2a2a; border:none; border-radius:8px; padding:6px 14px;">🗑️ Delete</button>` : '<span style="background:#2a2a2a; padding:6px 14px; border-radius:8px; font-size:0.7rem;">✨ Permanent Archive ✨</span>'}
                         </div>
                     </div>
                 </div>
             `;
         } else {
-            html += `<div class="class-photo-section" style="padding:2rem; text-align:center;">⚠️ Rewinding class photo...</div>`;
+            html += `<div class="class-photo-section" style="padding:2rem; text-align:center;">⚠️ Loading class photo...</div>`;
         }
 
         // OTHER IMAGES (archive gallery)
-        html += `<div class="other-images-section"><div class="other-title"><span>🎵 MIXTAPE SIDEB · ${otherImages.length} TRACKS 🎵</span></div><div class="images-masonry">`;
+        html += `<div class="other-images-section"><div class="other-title"><span>💿 ARCHIVE GALLERY · ${otherImages.length} ITEMS 💿</span></div><div class="images-masonry">`;
         if (otherImages.length === 0) {
-            html += `<div class="empty-archive-msg">💿 No tracks yet. Click "ADD TO MIXTAPE" and drop your 90s memories!<br>🌟 Use "Set as Class Photo" to make any image the new class photo (permanent spot).</div>`;
+            html += `<div class="empty-archive-msg">📀 No items yet. Click "ADD TO ARCHIVE" to upload your memories!<br>🌟 Use "Set as Class Photo" to make any image the new class photo (permanent spot).</div>`;
         } else {
             otherImages.forEach(img => {
                 const dateStr = new Date(img.timestamp).toLocaleString(undefined, { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
                 html += `
                     <div class="archive-item">
                         <div class="img-box">
-                            <img src="${escapeHtml(img.dataUrl)}" alt="mixtape memory" loading="lazy">
+                            <img src="${escapeHtml(img.dataUrl)}" alt="archive memory" loading="lazy">
                         </div>
                         <div class="item-info">
                             <div style="display: flex; flex-direction: column; gap: 4px;">
-                                <span class="caption-text" style="font-size:0.75rem;">📼 ${escapeHtml(img.caption)}</span>
+                                <span class="caption-text" style="font-size:0.75rem;">💿 ${escapeHtml(img.caption)}</span>
                                 <span class="item-timestamp">🕒 ${dateStr}</span>
                             </div>
                             <div style="display: flex; gap: 6px;">
@@ -619,7 +618,7 @@
                             </div>
                         </div>
                         <div style="padding: 0 12px 12px 12px;">
-                            <button class="edit-other-caption" data-id="${img.id}" data-current="${escapeHtml(img.caption)}" style="background:#ede2ff; border:1px solid #cfbef5;">✎ Edit Caption</button>
+                            <button class="edit-other-caption" data-id="${img.id}" data-current="${escapeHtml(img.caption)}" style="background:#2a2a2a; border:1px solid #5a5a5a;">✎ Edit Caption</button>
                         </div>
                     </div>
                 `;
@@ -663,7 +662,7 @@
     function handleEditClass(e) {
         const id = e.currentTarget.getAttribute('data-id');
         const current = e.currentTarget.getAttribute('data-current') || '';
-        const newCap = prompt("✏️ Edit class photo caption (90s style):", current);
+        const newCap = prompt("✏️ Edit class photo caption:", current);
         if (newCap !== null) editCaption(id, newCap);
     }
     function attachEditOtherCaptionEvents() {
@@ -675,21 +674,21 @@
     function handleEditOther(e) {
         const id = e.currentTarget.getAttribute('data-id');
         const current = e.currentTarget.getAttribute('data-current') || '';
-        const newCap = prompt("📀 Edit mixtape image caption:", current);
+        const newCap = prompt("💿 Edit image caption:", current);
         if (newCap !== null) editCaption(id, newCap);
     }
 
     function handleImageUpload(file) {
         if (!file) return;
         if (!file.type.startsWith('image/')) {
-            alert("Please upload an image file for the mixtape archive!");
+            alert("Please upload an image file for the archive!");
             return;
         }
         const reader = new FileReader();
         reader.onload = (ev) => {
             const dataUrl = ev.target.result;
             const fileName = file.name.length > 28 ? file.name.substring(0,25)+'..' : file.name;
-            const defaultCaption = `🎵 ${fileName} · ${new Date().toLocaleString()}`;
+            const defaultCaption = `💿 ${fileName} · ${new Date().toLocaleString()}`;
             addImage(dataUrl, defaultCaption);
         };
         reader.onerror = () => alert("Error reading file");
