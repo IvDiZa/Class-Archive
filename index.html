@@ -57,7 +57,7 @@
             filter: drop-shadow(2px 2px 0px #b8a9d9);
         }
 
-        /* header with mixtape energy — IMPROVED CONTRAST: grey/blue for readability */
+        /* header with mixtape energy — UPDATED: darker, readable grey-blue text */
         .archive-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -71,33 +71,28 @@
             font-weight: bold;
             font-family: 'Courier New', 'VT323', monospace;
             letter-spacing: 2px;
-            /* Solid grey-blue for clear readability */
-            color: #2c3e66;
-            text-shadow: 2px 2px 0px #e0d0ff;
+            /* Darker slate grey-blue for excellent readability */
+            background: linear-gradient(135deg, #2c3e66, #2c4a6e, #2a4b7a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 0px rgba(255, 240, 255, 0.6);
             text-transform: uppercase;
-            background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
-        }
-
-        /* Alternative: if you prefer a clean blue tone, this ensures high contrast */
-        .archive-header h1 span.highlight {
-            color: #3a6ea5;
         }
 
         .sub {
             font-family: monospace;
             font-size: 0.85rem;
-            font-weight: bold;
-            color: #2c4c6e;
+            color: #2d4a6e;  /* deep readable blue-grey */
             background: #f0eaffcc;
             display: inline-block;
             padding: 0.4rem 1.2rem;
             margin-top: 12px;
-            border-left: 6px solid #5c7f9e;
-            border-right: 6px solid #7d6b9e;
+            border-left: 6px solid #b6a2d6;
+            border-right: 6px solid #9bc0e0;
             border-radius: 40px;
             backdrop-filter: blur(2px);
+            font-weight: 600;
         }
 
         /* upload card — mixtape style */
@@ -151,8 +146,9 @@
             background: #e2d5ffcc;
             padding: 0.5rem 1rem;
             border-radius: 40px;
-            color: #4a3670;
+            color: #2d4a6e;
             border-left: 4px solid #b6a2d6;
+            font-weight: 500;
         }
 
         /* class photo section — permanent cassette jewel */
@@ -174,7 +170,7 @@
             align-items: center;
             gap: 12px;
             border-left: 10px solid #b8a9d9;
-            color: #5e3a8c;
+            color: #2c4d6e;
             background: linear-gradient(90deg, #eeddff, transparent);
         }
 
@@ -219,12 +215,12 @@
             background: #efe6ff;
             padding: 4px 12px;
             border-radius: 40px;
-            color: #4a2b6e;
+            color: #2c4d6e;
         }
 
         .permanent-badge {
             background: #c5d9f0;
-            color: #3e2a5e;
+            color: #2c4d6e;
             font-size: 0.65rem;
             font-weight: bold;
             padding: 4px 12px;
@@ -245,7 +241,7 @@
             font-weight: bold;
             margin-bottom: 1.2rem;
             padding-left: 0.5rem;
-            color: #6a4b9a;
+            color: #2c4d6e;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -304,7 +300,7 @@
 
         .item-timestamp {
             font-size: 0.65rem;
-            color: #9b7fc9;
+            color: #5c6f8c;
             font-family: monospace;
         }
 
@@ -333,7 +329,7 @@
             cursor: pointer;
             font-size: 0.7rem;
             font-weight: bold;
-            color: #4b2e72;
+            color: #2c4a6e;
             font-family: monospace;
         }
 
@@ -347,7 +343,7 @@
             border-radius: 32px;
             padding: 2rem;
             text-align: center;
-            color: #8b71b5;
+            color: #5c6f8c;
             font-weight: bold;
             grid-column: 1 / -1;
             border: 2px dashed #cfbef5;
@@ -359,8 +355,9 @@
             font-size: 0.7rem;
             border-top: 2px solid #dac6ff;
             padding-top: 1rem;
-            color: #7c62a5;
+            color: #5c6f8c;
             font-family: monospace;
+            font-weight: 500;
         }
 
         button, .file-label {
@@ -375,7 +372,7 @@
             padding: 4px 14px;
             font-size: 0.65rem;
             font-weight: bold;
-            color: #5e4090;
+            color: #2c4a6e;
         }
 
         /* mixtape doodles */
@@ -407,7 +404,6 @@
 <div class="archive-container">
     <div class="cassette-tape">📼🎧</div>
     <div class="archive-header">
-        <!-- Updated header with solid grey-blue for maximum readability -->
         <h1>🎵 UCL CLASS OF 2028 🎵<br>📼 INFORMATION, DATA & SOCIETY 📀</h1>
         <div class="sub">
             💿 90s MIXTAPE ARCHIVE 💿 <span class="blink-90s">✦</span> PERMANENT CLASS PHOTO <span class="blink-90s">✦</span> BABY BLUE & LAVENDER VIBE
@@ -438,114 +434,68 @@
 
 <script>
     // ========== 90s MIXTAPE STORAGE with PERMANENT CLASS PHOTO ==========
-    const STORAGE_KEY = "ucl_mixtape_90s_permanent_class_v2";
+    const STORAGE_KEY = "ucl_mixtape_90s_permanent_class";
     let imagesArray = [];
 
-    // ------------------------------------------------------------------
-    // IMPORTANT: DEFAULT CLASS PHOTO IS NOW SET TO "class_image.png"
-    // We embed a reference that will try to load class_image.png
-    // If the image file exists in the same folder, it will display.
-    // Otherwise, fallback to a friendly UCL placeholder.
-    // ------------------------------------------------------------------
-    const CUSTOM_CLASS_IMAGE_PATH = "class_image.png";
-    
-    // Function to check if custom class_image.png exists, else use fallback
-    // We'll create a dynamic loader: first try to fetch the image, if it fails use fallback SVG
-    // For simplicity and reliability: we'll attempt to use class_image.png as the default.
-    // However, if the file is missing, we provide a stylish retro placeholder that mentions the filename.
-    
-    function getDefaultClassPhotoDataUrl(callback) {
-        // Try to load class_image.png
-        const img = new Image();
-        img.onload = function() {
-            // Image exists, create a canvas to get dataURL or just return the path as src
-            // But for storage we need dataUrl, so convert to dataURL
-            const canvas = document.createElement('canvas');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            const dataUrl = canvas.toDataURL('image/png');
-            callback(dataUrl);
-        };
-        img.onerror = function() {
-            // Fallback: beautiful UCL gradient mixtape style placeholder
-            const fallbackSvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%23e0d0ff'/%3E%3Cpath d='M150,150 L650,150 L600,350 L200,350 Z' fill='%23c5e0f0' stroke='%239b87c9' stroke-width='6'/%3E%3Ccircle cx='400' cy='250' r='60' fill='%23f5e6ff' stroke='%23b8a9d9' stroke-width='4'/%3E%3Ctext x='400' y='210' font-size='38' text-anchor='middle' fill='%235e3e8e' font-weight='bold' font-family='monospace'%3EUCL 2028%3C/text%3E%3Ctext x='400' y='280' font-size='26' text-anchor='middle' fill='%237b5aa5'%3EClass Photo%3C/text%3E%3Ctext x='400' y='340' font-size='18' text-anchor='middle' fill='%239579be'%3Eclass_image.png%3C/text%3E%3Ctext x='400' y='390' font-size='14' text-anchor='middle' fill='%239579be'%3E(place your image)%3C/text%3E%3C/svg%3E`;
-            callback(fallbackSvg);
-        };
-        img.src = CUSTOM_CLASS_IMAGE_PATH;
-    }
-    
-    // We'll build the permanent class photo object dynamically on init
-    let defaultClassPhotoObject = null;
-    
-    function buildPermanentClassPhoto(dataUrl) {
+    // DEFAULT PERMANENT CLASS PHOTO — 90s cassette aesthetic
+    const DEFAULT_CLASS_PHOTO_URL = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%23e0d0ff'/%3E%3Cpath d='M150,150 L650,150 L600,350 L200,350 Z' fill='%23c5e0f0' stroke='%239b87c9' stroke-width='6'/%3E%3Ccircle cx='400' cy='250' r='60' fill='%23f5e6ff' stroke='%23b8a9d9' stroke-width='4'/%3E%3Ctext x='400' y='220' font-size='42' text-anchor='middle' fill='%235e3e8e' font-weight='bold' font-family='monospace'%3EUCL%3C/text%3E%3Ctext x='400' y='285' font-size='28' text-anchor='middle' fill='%237b5aa5'%3EClass of 2028%3C/text%3E%3Ctext x='400' y='345' font-size='20' text-anchor='middle' fill='%239579be'%3EInfo%2C Data %26 Society%3C/text%3E%3C/svg%3E";
+
+    function getDefaultClassPhoto() {
         return {
             id: "permanent_class_photo_ucl_mixtape",
-            dataUrl: dataUrl,
+            dataUrl: DEFAULT_CLASS_PHOTO_URL,
             timestamp: Date.now(),
-            caption: "📸 UCL Class of 2028 · class_image.png (Permanent Class Photo)",
+            caption: "🎧 UCL Class of 2028 · Permanent Mixtape Class Photo 🎤",
             isClassPhoto: true,
             permanent: true
         };
     }
-    
-    // Initialize storage with class_image.png priority
-    function initArchiveWithClassImage() {
-        getDefaultClassPhotoDataUrl(function(dataUrl) {
-            const permanentPhoto = buildPermanentClassPhoto(dataUrl);
-            imagesArray = [permanentPhoto];
-            saveToStorage();
-            renderArchive();
-        });
-    }
-    
+
     function loadFromStorage() {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
             try {
                 imagesArray = JSON.parse(stored);
                 ensureClassPhotoIntegrity();
-                renderArchive();
-            } catch(e) { 
-                initArchiveWithClassImage(); 
-            }
+            } catch(e) { initDefaultArchive(); }
         } else {
-            initArchiveWithClassImage();
+            initDefaultArchive();
         }
+        renderArchive();
     }
-    
+
+    function initDefaultArchive() {
+        imagesArray = [getDefaultClassPhoto()];
+        saveToStorage();
+    }
+
     function ensureClassPhotoIntegrity() {
-        // Check if permanent class photo exists
         const permanentExists = imagesArray.some(img => img.id === "permanent_class_photo_ucl_mixtape");
         if (!permanentExists) {
-            // reload default class image async
-            getDefaultClassPhotoDataUrl(function(dataUrl) {
-                const newPerm = buildPermanentClassPhoto(dataUrl);
-                imagesArray.unshift(newPerm);
-                // ensure only one class photo
-                for (let img of imagesArray) {
-                    if (img.id !== newPerm.id) img.isClassPhoto = false;
-                }
-                saveToStorage();
-                renderArchive();
-            });
-            return;
+            imagesArray.unshift(getDefaultClassPhoto());
         }
-        // ensure only one class photo = the permanent one
+        // ensure exactly one class photo = the permanent one
+        let hasClass = false;
+        for (let img of imagesArray) {
+            if (img.isClassPhoto === true) hasClass = true;
+        }
+        if (!hasClass) {
+            const perm = imagesArray.find(img => img.id === "permanent_class_photo_ucl_mixtape");
+            if (perm) perm.isClassPhoto = true;
+        }
+        // additionally, ensure no other image has class photo flag
         const permImg = imagesArray.find(img => img.id === "permanent_class_photo_ucl_mixtape");
         for (let img of imagesArray) {
             if (img !== permImg) img.isClassPhoto = false;
         }
         if (permImg) permImg.isClassPhoto = true;
         saveToStorage();
-        renderArchive();
     }
-    
+
     function saveToStorage() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(imagesArray));
     }
-    
+
     function addImage(dataUrl, customCaption = null) {
         const newId = Date.now() + '-' + Math.random().toString(36).substr(2, 8);
         const timestamp = Date.now();
@@ -562,7 +512,7 @@
         saveToStorage();
         renderArchive();
     }
-    
+
     function deleteImage(id) {
         const targetImg = imagesArray.find(img => img.id === id);
         if (targetImg && targetImg.permanent === true) {
@@ -576,7 +526,7 @@
             renderArchive();
         }
     }
-    
+
     function setAsClassPhoto(id) {
         const targetImg = imagesArray.find(img => img.id === id);
         if (!targetImg) return;
@@ -585,13 +535,11 @@
             img.isClassPhoto = false;
         }
         targetImg.isClassPhoto = true;
-        // if the new class photo is not the permanent id, it becomes the active class photo but we don't mark permanent
-        // the permanent badge only shows on the original permanent id image.
-        // But we preserve the permanent flag only for the original ID.
+        // keep permanent flag if target is permanent (only the default one has it)
         saveToStorage();
         renderArchive();
     }
-    
+
     function editCaption(id, newCaption) {
         const img = imagesArray.find(i => i.id === id);
         if (img) {
@@ -600,7 +548,7 @@
             renderArchive();
         }
     }
-    
+
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, function(m) {
@@ -610,24 +558,24 @@
             return m;
         });
     }
-    
+
     function renderArchive() {
         const container = document.getElementById("archiveGridContainer");
         if (!container) return;
-        
+
         const classPhotoImg = imagesArray.find(img => img.isClassPhoto === true);
         const otherImages = imagesArray.filter(img => !img.isClassPhoto);
-        
+
         let html = '';
-        
+
         // PERMANENT CLASS PHOTO SECTION (always top)
         if (classPhotoImg) {
-            const isOriginalPerm = classPhotoImg.id === "permanent_class_photo_ucl_mixtape";
+            const isPerm = classPhotoImg.permanent === true;
             html += `
                 <div class="class-photo-section">
                     <div class="section-title">
                         <span class="mixtape-icon">📼🎤</span> PERMANENT CLASS PHOTO · TOP OF THE CHARTS
-                        <span class="badge-star" style="background:#dac6ff; color:#5e3a8c; padding:0.2rem 0.8rem; border-radius:40px;">★ UCL 2028 ★</span>
+                        <span class="badge-star" style="background:#dac6ff; color:#2c4a6e; padding:0.2rem 0.8rem; border-radius:40px;">★ UCL 2028 ★</span>
                     </div>
                     <div class="class-photo-card">
                         <div class="class-img-wrapper">
@@ -637,21 +585,21 @@
                             <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items:center;">
                                 <span class="caption-text">🎧 ${escapeHtml(classPhotoImg.caption)}</span>
                                 <button class="edit-caption-btn" data-id="${classPhotoImg.id}" data-current="${escapeHtml(classPhotoImg.caption)}" style="background:#ede2ff;">✎ Edit Caption</button>
-                                ${isOriginalPerm ? '<span class="permanent-badge">🔒 Permanent Class Photo (class_image.png)</span>' : '<span class="permanent-badge">✨ Current Class Photo</span>'}
+                                ${isPerm ? '<span class="permanent-badge">🔒 Permanent Class Photo · Can\'t Delete</span>' : ''}
                             </div>
-                            ${isOriginalPerm ? '<span style="background:#ded1f5; padding:6px 14px; border-radius:40px; font-size:0.7rem;">📸 Permanent Image: class_image.png</span>' : `<button class="delete-btn" data-id="${classPhotoImg.id}" style="background:#ffe6f0; border:none; border-radius:40px; padding:6px 14px;">🗑️ Delete</button>`}
+                            ${!isPerm ? `<button class="delete-btn" data-id="${classPhotoImg.id}" style="background:#ffe6f0; border:none; border-radius:40px; padding:6px 14px;">🗑️ Delete</button>` : '<span style="background:#ded1f5; padding:6px 14px; border-radius:40px; font-size:0.7rem;">✨ Permanent Memory ✨</span>'}
                         </div>
                     </div>
                 </div>
             `;
         } else {
-            html += `<div class="class-photo-section" style="padding:2rem; text-align:center;">⚠️ Loading class photo...</div>`;
+            html += `<div class="class-photo-section" style="padding:2rem; text-align:center;">⚠️ Rewinding class photo...</div>`;
         }
-        
+
         // OTHER IMAGES (archive gallery)
         html += `<div class="other-images-section"><div class="other-title"><span>🎵 MIXTAPE SIDEB · ${otherImages.length} TRACKS 🎵</span></div><div class="images-masonry">`;
         if (otherImages.length === 0) {
-            html += `<div class="empty-archive-msg">💿 No tracks yet. Click "ADD TO MIXTAPE" and drop your 90s memories!<br>🌟 Use "Set as Class Photo" to make any image the new class photo.</div>`;
+            html += `<div class="empty-archive-msg">💿 No tracks yet. Click "ADD TO MIXTAPE" and drop your 90s memories!<br>🌟 Use "Set as Class Photo" to make any image the new class photo (permanent spot).</div>`;
         } else {
             otherImages.forEach(img => {
                 const dateStr = new Date(img.timestamp).toLocaleString(undefined, { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
@@ -679,13 +627,13 @@
         }
         html += `</div></div>`;
         container.innerHTML = html;
-        
+
         attachDeleteEvents();
         attachPromoteEvents();
         attachEditCaptionEvents();
         attachEditOtherCaptionEvents();
     }
-    
+
     function attachDeleteEvents() {
         document.querySelectorAll('.delete-btn, .btn-sm-delete').forEach(btn => {
             btn.removeEventListener('click', handleDelete);
@@ -730,7 +678,7 @@
         const newCap = prompt("📀 Edit mixtape image caption:", current);
         if (newCap !== null) editCaption(id, newCap);
     }
-    
+
     function handleImageUpload(file) {
         if (!file) return;
         if (!file.type.startsWith('image/')) {
@@ -747,7 +695,7 @@
         reader.onerror = () => alert("Error reading file");
         reader.readAsDataURL(file);
     }
-    
+
     const fileInput = document.getElementById('imageUploadInput');
     if (fileInput) {
         fileInput.addEventListener('change', (e) => {
@@ -757,7 +705,7 @@
             }
         });
     }
-    
+
     loadFromStorage();
 </script>
 </body>
