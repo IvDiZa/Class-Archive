@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>UCL Class of 2028 • 90s Mixtape Archive • Baby Blue & Lavender</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 90s VIBE with baby blue + lavender pastels */
+        body {
+            background: linear-gradient(135deg, #c5e0f0 0%, #e6d5f0 100%);
+            font-family: 'Courier New', 'VT323', 'Press Start 2P', 'Comic Sans MS', 'Chalkboard SE', monospace;
+            padding: 1.8rem 1.2rem 3rem;
+            color: #3a2a5e;
+            position: relative;
+        }
+
+        /* retro tape pattern overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg, rgba(180, 200, 255, 0.1) 0px, rgba(180, 200, 255, 0.1) 2px, transparent 2px, transparent 8px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .archive-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 250, 255, 0.85);
+            backdrop-filter: blur(3px);
+            border: 3px solid #b8a9d9;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 12px 12px 0px #9b87c9, 0 0 0 4px #f0d0ff inset, 0 0 0 8px #c2e0ff inset;
+        }
+
+        /* cassette tape decorations */
+        .cassette-tape {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 2.5rem;
+            opacity: 0.6;
+            transform: rotate(10deg);
+            filter: drop-shadow(2px 2px 0px #b8a9d9);
+        }
+
+        /* header with mixtape energy */
+        .archive-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px dashed #b8a9d9;
+            padding-bottom: 1.2rem;
+            position: relative;
+        }
+
+        .archive-header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: 'Courier New', 'VT323', monospace;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #6b4e9e, #7c9ecf, #c28ae0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 0px #ffe0ff;
+            text-transform: uppercase;
+        }
+
+        .sub {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #6d5c8a;
+            background: #f0eaffcc;
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            margin-top: 12px;
+            border-left: 6px solid #b6a2d6;
+            border-right: 6px solid #9bc0e0;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+        }
+
+        /* upload card — mixtape style */
+        .upload-card {
+            background: #f8f0ffdd;
+            border: 2px solid #b8a9d9;
+            border-radius: 32px;
+            padding: 1.3rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 6px 6px 0px #b3a0d0;
+            transition: 0.1s linear;
+        }
+
+        .upload-area {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .file-label {
+            background: #b8a9d9;
+            color: #2e1f47;
+            font-weight: bold;
+            font-family: monospace;
+            padding: 0.7rem 1.6rem;
+            border-radius: 60px;
+            border: none;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.1s linear;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 3px 3px 0px #6b5a8e;
+        }
+
+        .file-label:hover {
+            background: #cbb2ff;
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #6b5a8e;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .upload-info {
+            font-family: monospace;
+            font-size: 0.7rem;
+            background: #e2d5ffcc;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            color: #4a3670;
+            border-left: 4px solid #b6a2d6;
+        }
+
+        /* class photo section — permanent cassette jewel */
+        .class-photo-section {
+            background: #faf5ff;
+            border-radius: 28px;
+            padding: 1.2rem;
+            margin-bottom: 2rem;
+            border: 2px solid #cbb2ff;
+            box-shadow: 8px 8px 0px #b1a0ce;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            padding-left: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 10px solid #b8a9d9;
+            color: #5e3a8c;
+            background: linear-gradient(90deg, #eeddff, transparent);
+        }
+
+        .class-photo-card {
+            background: #ffffffdd;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #dac6ff;
+        }
+
+        .class-img-wrapper {
+            width: 100%;
+            max-height: 480px;
+            display: flex;
+            justify-content: center;
+            background: #e9dcff;
+            padding: 10px;
+        }
+
+        .class-img-wrapper img {
+            max-width: 100%;
+            max-height: 440px;
+            object-fit: contain;
+            border-radius: 16px;
+            border: 2px solid #c2b0e6;
+        }
+
+        .image-caption {
+            padding: 0.9rem 1.3rem;
+            background: #fdf9ff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-top: 2px dotted #cfbef5;
+        }
+
+        .caption-text {
+            font-family: monospace;
+            font-weight: bold;
+            background: #efe6ff;
+            padding: 4px 12px;
+            border-radius: 40px;
+            color: #4a2b6e;
+        }
+
+        .permanent-badge {
+            background: #c5d9f0;
+            color: #3e2a5e;
+            font-size: 0.65rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: monospace;
+        }
+
+        /* other images gallery — 90s mixtape cards */
+        .other-images-section {
+            margin-top: 0.8rem;
+        }
+
+        .other-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            padding-left: 0.5rem;
+            color: #6a4b9a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #e7dcff99;
+            width: fit-content;
+            padding: 6px 18px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+        }
+
+        .images-masonry {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .archive-item {
+            background: #fffbfe;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            border: 2px solid #cfbef5;
+            box-shadow: 5px 5px 0px #b6a0d0;
+        }
+
+        .archive-item:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px #9f88c5;
+        }
+
+        .img-box {
+            background: #ebddff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 190px;
+            overflow: hidden;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-info {
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fdf5ff;
+            border-top: 1px solid #e6d8ff;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .item-timestamp {
+            font-size: 0.65rem;
+            color: #9b7fc9;
+            font-family: monospace;
+        }
+
+        .btn-sm-delete {
+            background: #ffe6f0;
+            border: 1px solid #ddb6f0;
+            padding: 5px 12px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #8b5e9e;
+            font-family: monospace;
+        }
+
+        .btn-sm-delete:hover {
+            background: #ffd0e6;
+            transform: scale(0.95);
+        }
+
+        .promote-btn {
+            background: #cfe2ff;
+            border: 1px solid #b8a9d9;
+            padding: 5px 12px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #4b2e72;
+            font-family: monospace;
+        }
+
+        .promote-btn:hover {
+            background: #bdd4ff;
+            transform: scale(0.96);
+        }
+
+        .empty-archive-msg {
+            background: #f7f0ff;
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+            color: #8b71b5;
+            font-weight: bold;
+            grid-column: 1 / -1;
+            border: 2px dashed #cfbef5;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.7rem;
+            border-top: 2px solid #dac6ff;
+            padding-top: 1rem;
+            color: #7c62a5;
+            font-family: monospace;
+        }
+
+        button, .file-label {
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+
+        .edit-caption-btn, .edit-other-caption {
+            background: #e3d6ff;
+            border: 1px solid #c2b0e6;
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-size: 0.65rem;
+            font-weight: bold;
+            color: #5e4090;
+        }
+
+        /* mixtape doodles */
+        .mixtape-icon {
+            font-size: 1.6rem;
+            vertical-align: middle;
+            filter: drop-shadow(2px 2px 0px #b8a9d9);
+        }
+
+        @media (max-width: 650px) {
+            .archive-container {
+                padding: 1rem;
+            }
+            .archive-header h1 {
+                font-size: 1.2rem;
+            }
+        }
+
+        .blink-90s {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+<div class="archive-container">
+    <div class="cassette-tape">📼🎧</div>
+    <div class="archive-header">
+        <h1>🎵 UCL CLASS OF 2028 🎵<br>📼 INFORMATION, DATA & SOCIETY 📀</h1>
+        <div class="sub">
+            💿 90s MIXTAPE ARCHIVE 💿 <span class="blink-90s">✦</span> PERMANENT CLASS PHOTO <span class="blink-90s">✦</span> BABY BLUE & LAVENDER VIBE
+        </div>
+    </div>
+
+    <!-- upload zone retro mixtape -->
+    <div class="upload-card">
+        <div class="upload-area">
+            <label class="file-label" for="imageUploadInput">
+                🎤 + ADD TO MIXTAPE
+            </label>
+            <input type="file" id="imageUploadInput" accept="image/jpeg, image/png, image/webp, image/jpg, image/gif">
+            <div class="upload-info">
+                📀 BOOMBOX MODE: permanent class photo stays on top. Use [🌟 SET AS CLASS] to update it.<br>
+                🎧 Upload memories, edit captions, rewind the 90s.
+            </div>
+        </div>
+    </div>
+
+    <!-- dynamic archive grid -->
+    <div class="archive-grid" id="archiveGridContainer"></div>
+    <div class="footer-note">
+        🎶 UCL | INFORMATION DATA & SOCIETY — CLASS OF 2028 • 90s MIXTAPE EDITION 🎶<br>
+        📼 permanent class photo • baby blue + lavender • rewind & play
+    </div>
+</div>
+
+<script>
+    // ========== 90s MIXTAPE STORAGE with PERMANENT CLASS PHOTO ==========
+    const STORAGE_KEY = "ucl_mixtape_90s_permanent_class";
+    let imagesArray = [];
+
+    // DEFAULT PERMANENT CLASS PHOTO — 90s cassette aesthetic
+    const DEFAULT_CLASS_PHOTO_URL = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%23e0d0ff'/%3E%3Cpath d='M150,150 L650,150 L600,350 L200,350 Z' fill='%23c5e0f0' stroke='%239b87c9' stroke-width='6'/%3E%3Ccircle cx='400' cy='250' r='60' fill='%23f5e6ff' stroke='%23b8a9d9' stroke-width='4'/%3E%3Ctext x='400' y='220' font-size='42' text-anchor='middle' fill='%235e3e8e' font-weight='bold' font-family='monospace'%3EUCL%3C/text%3E%3Ctext x='400' y='285' font-size='28' text-anchor='middle' fill='%237b5aa5'%3EClass of 2028%3C/text%3E%3Ctext x='400' y='345' font-size='20' text-anchor='middle' fill='%239579be'%3EInfo%2C Data %26 Society%3C/text%3E%3C/svg%3E";
+
+    function getDefaultClassPhoto() {
+        return {
+            id: "permanent_class_photo_ucl_mixtape",
+            dataUrl: DEFAULT_CLASS_PHOTO_URL,
+            timestamp: Date.now(),
+            caption: "🎧 UCL Class of 2028 · Permanent Mixtape Class Photo 🎤",
+            isClassPhoto: true,
+            permanent: true
+        };
+    }
+
+    function loadFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            try {
+                imagesArray = JSON.parse(stored);
+                ensureClassPhotoIntegrity();
+            } catch(e) { initDefaultArchive(); }
+        } else {
+            initDefaultArchive();
+        }
+        renderArchive();
+    }
+
+    function initDefaultArchive() {
+        imagesArray = [getDefaultClassPhoto()];
+        saveToStorage();
+    }
+
+    function ensureClassPhotoIntegrity() {
+        const permanentExists = imagesArray.some(img => img.id === "permanent_class_photo_ucl_mixtape");
+        if (!permanentExists) {
+            imagesArray.unshift(getDefaultClassPhoto());
+        }
+        // ensure exactly one class photo = the permanent one
+        let hasClass = false;
+        for (let img of imagesArray) {
+            if (img.isClassPhoto === true) hasClass = true;
+        }
+        if (!hasClass) {
+            const perm = imagesArray.find(img => img.id === "permanent_class_photo_ucl_mixtape");
+            if (perm) perm.isClassPhoto = true;
+        }
+        // additionally, ensure no other image has class photo flag
+        const permImg = imagesArray.find(img => img.id === "permanent_class_photo_ucl_mixtape");
+        for (let img of imagesArray) {
+            if (img !== permImg) img.isClassPhoto = false;
+        }
+        if (permImg) permImg.isClassPhoto = true;
+        saveToStorage();
+    }
+
+    function saveToStorage() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(imagesArray));
+    }
+
+    function addImage(dataUrl, customCaption = null) {
+        const newId = Date.now() + '-' + Math.random().toString(36).substr(2, 8);
+        const timestamp = Date.now();
+        const caption = customCaption ? customCaption : `📼 Mixtape cut ${new Date(timestamp).toLocaleString()}`;
+        const newImage = {
+            id: newId,
+            dataUrl: dataUrl,
+            timestamp: timestamp,
+            caption: caption,
+            isClassPhoto: false,
+            permanent: false
+        };
+        imagesArray.push(newImage);
+        saveToStorage();
+        renderArchive();
+    }
+
+    function deleteImage(id) {
+        const targetImg = imagesArray.find(img => img.id === id);
+        if (targetImg && targetImg.permanent === true) {
+            alert("🎵 The class photo is permanent! You can't delete it. Use 'Set as Class Photo' on another image to replace it if you wish.");
+            return;
+        }
+        const index = imagesArray.findIndex(img => img.id === id);
+        if (index !== -1) {
+            imagesArray.splice(index, 1);
+            saveToStorage();
+            renderArchive();
+        }
+    }
+
+    function setAsClassPhoto(id) {
+        const targetImg = imagesArray.find(img => img.id === id);
+        if (!targetImg) return;
+        // remove class flag from all
+        for (let img of imagesArray) {
+            img.isClassPhoto = false;
+        }
+        targetImg.isClassPhoto = true;
+        // keep permanent flag if target is permanent (only the default one has it)
+        saveToStorage();
+        renderArchive();
+    }
+
+    function editCaption(id, newCaption) {
+        const img = imagesArray.find(i => i.id === id);
+        if (img) {
+            img.caption = newCaption.trim() || "🎶 90s memory";
+            saveToStorage();
+            renderArchive();
+        }
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function renderArchive() {
+        const container = document.getElementById("archiveGridContainer");
+        if (!container) return;
+
+        const classPhotoImg = imagesArray.find(img => img.isClassPhoto === true);
+        const otherImages = imagesArray.filter(img => !img.isClassPhoto);
+
+        let html = '';
+
+        // PERMANENT CLASS PHOTO SECTION (always top)
+        if (classPhotoImg) {
+            const isPerm = classPhotoImg.permanent === true;
+            html += `
+                <div class="class-photo-section">
+                    <div class="section-title">
+                        <span class="mixtape-icon">📼🎤</span> PERMANENT CLASS PHOTO · TOP OF THE CHARTS
+                        <span class="badge-star" style="background:#dac6ff; color:#5e3a8c; padding:0.2rem 0.8rem; border-radius:40px;">★ UCL 2028 ★</span>
+                    </div>
+                    <div class="class-photo-card">
+                        <div class="class-img-wrapper">
+                            <img src="${escapeHtml(classPhotoImg.dataUrl)}" alt="UCL Class Photo" loading="lazy">
+                        </div>
+                        <div class="image-caption">
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items:center;">
+                                <span class="caption-text">🎧 ${escapeHtml(classPhotoImg.caption)}</span>
+                                <button class="edit-caption-btn" data-id="${classPhotoImg.id}" data-current="${escapeHtml(classPhotoImg.caption)}" style="background:#ede2ff;">✎ Edit Caption</button>
+                                ${isPerm ? '<span class="permanent-badge">🔒 Permanent Class Photo · Can\'t Delete</span>' : ''}
+                            </div>
+                            ${!isPerm ? `<button class="delete-btn" data-id="${classPhotoImg.id}" style="background:#ffe6f0; border:none; border-radius:40px; padding:6px 14px;">🗑️ Delete</button>` : '<span style="background:#ded1f5; padding:6px 14px; border-radius:40px; font-size:0.7rem;">✨ Permanent Memory ✨</span>'}
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            html += `<div class="class-photo-section" style="padding:2rem; text-align:center;">⚠️ Rewinding class photo...</div>`;
+        }
+
+        // OTHER IMAGES (archive gallery)
+        html += `<div class="other-images-section"><div class="other-title"><span>🎵 MIXTAPE SIDEB · ${otherImages.length} TRACKS 🎵</span></div><div class="images-masonry">`;
+        if (otherImages.length === 0) {
+            html += `<div class="empty-archive-msg">💿 No tracks yet. Click "ADD TO MIXTAPE" and drop your 90s memories!<br>🌟 Use "Set as Class Photo" to make any image the new class photo (permanent spot).</div>`;
+        } else {
+            otherImages.forEach(img => {
+                const dateStr = new Date(img.timestamp).toLocaleString(undefined, { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+                html += `
+                    <div class="archive-item">
+                        <div class="img-box">
+                            <img src="${escapeHtml(img.dataUrl)}" alt="mixtape memory" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                <span class="caption-text" style="font-size:0.75rem;">📼 ${escapeHtml(img.caption)}</span>
+                                <span class="item-timestamp">🕒 ${dateStr}</span>
+                            </div>
+                            <div style="display: flex; gap: 6px;">
+                                <button class="promote-btn" data-id="${img.id}">🌟 Set as Class</button>
+                                <button class="btn-sm-delete" data-id="${img.id}">❌ Delete</button>
+                            </div>
+                        </div>
+                        <div style="padding: 0 12px 12px 12px;">
+                            <button class="edit-other-caption" data-id="${img.id}" data-current="${escapeHtml(img.caption)}" style="background:#ede2ff; border:1px solid #cfbef5;">✎ Edit Caption</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        html += `</div></div>`;
+        container.innerHTML = html;
+
+        attachDeleteEvents();
+        attachPromoteEvents();
+        attachEditCaptionEvents();
+        attachEditOtherCaptionEvents();
+    }
+
+    function attachDeleteEvents() {
+        document.querySelectorAll('.delete-btn, .btn-sm-delete').forEach(btn => {
+            btn.removeEventListener('click', handleDelete);
+            btn.addEventListener('click', handleDelete);
+        });
+    }
+    function handleDelete(e) {
+        const id = e.currentTarget.getAttribute('data-id');
+        if (id) deleteImage(id);
+    }
+    function attachPromoteEvents() {
+        document.querySelectorAll('.promote-btn').forEach(btn => {
+            btn.removeEventListener('click', handlePromote);
+            btn.addEventListener('click', handlePromote);
+        });
+    }
+    function handlePromote(e) {
+        const id = e.currentTarget.getAttribute('data-id');
+        if (id) setAsClassPhoto(id);
+    }
+    function attachEditCaptionEvents() {
+        document.querySelectorAll('.edit-caption-btn').forEach(btn => {
+            btn.removeEventListener('click', handleEditClass);
+            btn.addEventListener('click', handleEditClass);
+        });
+    }
+    function handleEditClass(e) {
+        const id = e.currentTarget.getAttribute('data-id');
+        const current = e.currentTarget.getAttribute('data-current') || '';
+        const newCap = prompt("✏️ Edit class photo caption (90s style):", current);
+        if (newCap !== null) editCaption(id, newCap);
+    }
+    function attachEditOtherCaptionEvents() {
+        document.querySelectorAll('.edit-other-caption').forEach(btn => {
+            btn.removeEventListener('click', handleEditOther);
+            btn.addEventListener('click', handleEditOther);
+        });
+    }
+    function handleEditOther(e) {
+        const id = e.currentTarget.getAttribute('data-id');
+        const current = e.currentTarget.getAttribute('data-current') || '';
+        const newCap = prompt("📀 Edit mixtape image caption:", current);
+        if (newCap !== null) editCaption(id, newCap);
+    }
+
+    function handleImageUpload(file) {
+        if (!file) return;
+        if (!file.type.startsWith('image/')) {
+            alert("Please upload an image file for the mixtape archive!");
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            const dataUrl = ev.target.result;
+            const fileName = file.name.length > 28 ? file.name.substring(0,25)+'..' : file.name;
+            const defaultCaption = `🎵 ${fileName} · ${new Date().toLocaleString()}`;
+            addImage(dataUrl, defaultCaption);
+        };
+        reader.onerror = () => alert("Error reading file");
+        reader.readAsDataURL(file);
+    }
+
+    const fileInput = document.getElementById('imageUploadInput');
+    if (fileInput) {
+        fileInput.addEventListener('change', (e) => {
+            if (fileInput.files && fileInput.files.length) {
+                handleImageUpload(fileInput.files[0]);
+                fileInput.value = '';
+            }
+        });
+    }
+
+    loadFromStorage();
+</script>
+</body>
+</html>
